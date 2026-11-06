@@ -1,9 +1,9 @@
-import kendaraan
+from .kendaraan import Kendaraan
 
 class Dealer:
-  def __init__(self, nama, stok=None):
+  def __init__(self, nama, stok =None):
     self.nama = nama
-    self.stok = list(stok or kendaraan)
+    self.stok = list(stok or [])
 
   def total_kendaraan(self):
     return len(self.stok)

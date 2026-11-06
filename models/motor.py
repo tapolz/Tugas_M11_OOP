@@ -1,4 +1,4 @@
-from . import Kendaraan
+from .kendaraan import Kendaraan
 
 class Motor(Kendaraan):
   pajak = 0.2

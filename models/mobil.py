@@ -1,4 +1,4 @@
-from . import Kendaraan
+from .kendaraan import Kendaraan
 
 class Mobil(Kendaraan):
   pajak = 0.5

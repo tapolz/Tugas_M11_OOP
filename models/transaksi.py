@@ -1,4 +1,4 @@
-import kendaraan
+from .kendaraan import Kendaraan
 
 class Transaksi:
   def __init__(self, kode, tanggal, pelanggan, dealer, daftar_item=None):
@@ -6,7 +6,7 @@ class Transaksi:
     self.tanggal = tanggal
     self.pelanggan = pelanggan
     self.dealer = dealer
-    self.daftar_item = list(daftar_item or kendaraan)
+    self.daftar_item = list(daftar_item or [])
 
   def info(self):
     detail_item = "\n".join(item.info() for item in self.daftar_item)
