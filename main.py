@@ -11,6 +11,7 @@ from services import BeliService, JualService
 # Andi 08777666 3 M002
 # Budi 08123456 1 M001,T001
 # Sari 08999888 2 M001
+#
 
 pilihan = {'mobil': Mobil, 'motor': Motor}
 dealer = Dealer(input())
@@ -47,6 +48,18 @@ for nama, objek in [('Duplikat', cadangan), ('Bukan Kendaraan', 'sepeda'), ('Har
 print('Cari Ada:', beli.cari_kendaraan(cadangan.kode) is cadangan if cadangan else None)
 print('Cari Tidak Ada:', beli.cari_kendaraan('TIDAK-ADA'))
 
+# uji penjualan
+m = int(input())
+for _ in range(m):
+    nama, kontak, tanggal, kodes = input().split()
+    daftar = kodes.split(',')
+    try:
+        trx = jual.jual_kendaraan(Pelanggan(nama, kontak), daftar, int(tanggal))
+        print('Jual OK:', trx.kode, 'Item:', len(trx.daftar_item), 'Total:', trx.total_harga())
+    except (TypeError, ValueError) as e:
+        print('Jual Gagal:', e)
+    print('Stok:', dealer.total_kendaraan())
+
 # kasus error penjualan
 stok_kini = [k.kode for k in dealer.stok]
 kode_ada = stok_kini[0] if stok_kini else 'X'
@@ -68,17 +81,3 @@ print('Stok Akhir:', stok_kini == [k.kode for k in dealer.stok], len(dealer.stok
 print('Riwayat:', len(jual.riwayat))
 print('Total Pendapatan:', jual.total_pendapatan())
 print('Kendaraan Terjual Hilang Dari Stok:', all(beli.cari_kendaraan(i.kendaraan.kode) is None for t in jual.riwayat for i in t.daftar_item))
-
-# UJI JUAL
-m = int(input())
-for _ in range(m):
-    nama, kontak, tanggal, kodes = input().split()
-    daftar = kodes.split(',')
-    try:
-        trx = jual.jual_kendaraan(Pelanggan(nama, kontak), daftar, int(tanggal))
-        print('Jual OK:', trx.kode, 'Item:', len(trx.daftar_item), 'Total:', trx.total_harga())
-    except (TypeError, ValueError) as e:
-        print("error")
-        print('Jual Gagal:', e)
-    print('Stok:', dealer.total_kendaraan())
-

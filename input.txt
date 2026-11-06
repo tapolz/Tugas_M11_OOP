@@ -1,0 +1,12 @@
+DealerMaju
+4
+mobil M001 Avanza 2020 Toyota bensin ya 200000000 7
+mobil M002 Brio 2022 Honda bensin tidak 180000000 5
+motor T001 Vario 2021 Honda bensin ya 20000000
+mobil M001 Xenia 2019 Daihatsu bensin ya 150000000 7
+4
+Budi 08123456 1 M001,T001
+Andi 08777666 3 M002
+Cok 08334234 4 M003
+Sari 08999888 2 M001
+#Satu baris tambahan untuk error console
